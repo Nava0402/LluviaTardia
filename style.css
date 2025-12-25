@@ -60,6 +60,19 @@ body{
     color:#ffffff;
     font-size:1.4rem;
     cursor:pointer;
+    transition: transform 200ms ease;
+}
+.menu-btn i{
+    display:inline-block;
+    transition: transform 200ms ease, opacity 200ms ease;
+    font-size:1.2rem;
+    line-height:1;
+}
+.menu-btn:active i{
+    transform: scale(0.9) rotate(-10deg);
+}
+.menu-btn.open i{
+    transform: rotate(90deg) scale(1.05);
 }
 
 .btn{
@@ -90,8 +103,32 @@ body{
 }
 
 @media(max-width:600px){
-	.nav{display:none}
+	.header-inner{position:relative}
+	/* start collapsed but present for transition (not display:none) */
+	.nav{
+		display:flex;
+		max-height:0;
+		overflow:hidden;
+		opacity:0;
+		transform:translateY(-8px);
+		transition: max-height 300ms ease, opacity 200ms ease, transform 250ms ease;
+	}
+	.nav.open{
+		max-height:600px; /* large enough to contain links */
+		opacity:1;
+		transform:translateY(0);
+		flex-direction:column;
+		gap:12px;
+		position:absolute;
+		top:100%;
+		left:0;
+		right:0;
+		background:linear-gradient(90deg, rgba(44, 99, 158, 0.95), rgba(4, 48, 95, 0.95));
+		padding:12px 20px;
+		z-index:50;
+	}
 	.menu-btn{display:block}
+	.menu-btn.open{transform:rotate(90deg)}
 	.cards{grid-template-columns:1fr}
 	.hero h2{font-size:1.6rem}
 }
