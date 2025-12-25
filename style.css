@@ -134,7 +134,8 @@ body{
 		opacity:0;
 		transform:translateY(-8px);
 		transition: max-height 300ms ease, opacity 200ms ease, transform 250ms ease;
-	}
+		pointer-events: none; /* non-interactive until JS makes it active */
+	} 
 	.nav.open{
 		max-height:600px; /* large enough to contain links */
 		opacity:1;
@@ -145,9 +146,11 @@ body{
 		top:100%;
 		left:0;
 		right:0;
-		background:linear-gradient(90deg, rgba(44, 99, 158, 0.95), rgba(4, 48, 95, 0.95));
+		/* opaque gradient to avoid seeing content underneath */
+		background: linear-gradient(90deg, #2c639e, #04305f);
 		padding:12px 20px;
 		z-index:50;
+		box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 	}
 	.menu-btn{display:block}
 	.menu-btn.open{transform:rotate(90deg)}
