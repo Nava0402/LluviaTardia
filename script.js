@@ -44,19 +44,40 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 
-		// reset state on resize (if switching to desktop)
-		window.addEventListener('resize', () => {
-			if (window.innerWidth > MOBILE_BREAKPOINT && nav.classList.contains('open')) {
-				nav.classList.remove('open');
-				menuBtn.setAttribute('aria-expanded', 'false');
-				menuBtn.classList.remove('open');
-				const icon = menuBtn.querySelector('i');
-				if (icon) {
-					icon.classList.remove('fa-xmark');
-					icon.classList.add('fa-bars');
-					menuBtn.setAttribute('aria-label', 'Abrir menú');
-				}
+		// function: reduce logo font-size until it fits in one line (min size enforced)
+		function adjustLogoFont() {
+			const logo = document.querySelector('.logo');
+			if (!logo) return;
+			const docStyles = getComputedStyle(document.documentElement);
+			const maxPx = parseFloat(docStyles.getPropertyValue('--logo-max-size')) || parseFloat(getComputedStyle(logo).fontSize);
+			const minPx = parseFloat(docStyles.getPropertyValue('--logo-min-size')) || 12;
+			// start from the max size
+			logo.style.fontSize = maxPx + 'px';
+			// if it overflows, reduce until it fits or we reach min
+			while (logo.scrollWidth > logo.clientWidth && parseFloat(logo.style.fontSize) > minPx) {
+				logo.style.fontSize = (parseFloat(logo.style.fontSize) - 1) + 'px';
 			}
+		}
+
+		// initial adjustment and on resize (debounced)
+		adjustLogoFont();
+		let resizeTimeout;
+		window.addEventListener('resize', () => {
+			clearTimeout(resizeTimeout);
+			resizeTimeout = setTimeout(() => {
+				adjustLogoFont();
+				if (window.innerWidth > MOBILE_BREAKPOINT && nav.classList.contains('open')) {
+					nav.classList.remove('open');
+					menuBtn.setAttribute('aria-expanded', 'false');
+					menuBtn.classList.remove('open');
+					const icon = menuBtn.querySelector('i');
+					if (icon) {
+						icon.classList.remove('fa-xmark');
+						icon.classList.add('fa-bars');
+						menuBtn.setAttribute('aria-label', 'Abrir menú');
+					}
+				}
+			}, 120);
 		});
 	}
 });

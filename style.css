@@ -4,7 +4,9 @@
     --muted: #6b7280;
     --card: #ffffff;
     --max-width: 2000px;
-}
+    --logo-max-size: 20px; /* ~1.25rem */
+    --logo-min-size: 13px; /* minimum readable */
+} 
 
 *{
     box-sizing: border-box;
@@ -34,12 +36,32 @@ body{
     align-items:center;
     justify-content:space-between;
     padding:16px 0;
+    gap:12px;
+}
+
+.logo-img{
+    width:48px;
+    height:auto;
+    flex:0 0 auto;
+    margin-right:8px;
 }
 
 .logo{
     margin:0;
-    font-size:1.25rem;
     font-weight:700;
+    flex:1 1 auto; /* take remaining space */
+    min-width:0; /* allow shrinking inside flex */
+    white-space:nowrap; /* prefer one line */
+    overflow:hidden; /* clipped until JS adjusts */
+    line-height:1.05;
+    /* responsive fallback, JS will fine-tune to make it fit exactly */
+    font-size: clamp(var(--logo-min-size), 3.2vw, var(--logo-max-size));
+}
+
+
+@media(max-width:600px){
+    .logo{font-size:1rem}
+    .logo-img{width:40px}
 }
 
 .nav{
