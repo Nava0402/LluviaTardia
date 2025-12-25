@@ -4,8 +4,8 @@
     --muted: #6b7280;
     --card: #ffffff;
     --max-width: 2000px;
-    --logo-max-size: 20px; /* ~1.25rem */
-    --logo-min-size: 13px; /* minimum readable */
+    --font-base: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    --font-brand: "Playfair Display", Georgia, "Times New Roman", serif;
 } 
 
 *{
@@ -16,9 +16,9 @@ html,
 body{
     height: 100%;
     margin: 0;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial;
+    font-family: var(--font-base);
     background: var(--bg);color: #0f172a;
-}
+}  
 
 .container{
     max-width:var(--max-width);
@@ -27,7 +27,7 @@ body{
 }
 
 .site-header{
-    background:linear-gradient(90deg, rgba(44, 99, 158, 0.9), rgba(4, 48, 95, 0.9));
+    background:#000; /* look like the reference */
     color:#ffffff;
 }
 
@@ -38,6 +38,78 @@ body{
     padding:16px 0;
     gap:12px;
 }
+
+/* brand */
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex:0 0 auto;
+    /* move the whole brand slightly more to the right */
+    margin-left:24px;
+}
+.brand-img{
+    width:72px;
+    height:72px;
+    display:block;
+    border-radius:50%;
+    object-fit:cover; /* in case you add an image */
+    background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,0.18);
+}
+.brand-text{display:flex;flex-direction:column;line-height:1;align-items:flex-start}
+.brand-line1{
+    font-family:var(--font-brand);
+    font-size:1.2rem;
+    font-weight:400;
+    letter-spacing:0.18em; /* wider tracking for 'The' */
+    margin-bottom:-4px; /* visually tuck it under */
+    text-transform:none;
+}
+.brand-line2{
+    font-family:var(--font-brand);
+    font-size:2rem;
+    font-weight:400;
+    letter-spacing:0.12em; /* subtle tracking like reference */
+    line-height:1;
+    text-transform:none;
+}
+
+@media(max-width:600px){
+    .brand{margin-left:12px}
+    .brand-img{width:56px;height:56px}
+    .brand-line1{font-size:0.95rem}
+    .brand-line2{font-size:1.125rem}
+}
+
+/* nav aligned to the right */
+.nav{
+    display:flex;
+    gap:20px;
+    flex:0 1 auto; /* don't take all space */
+    margin-left:auto; /* push to the right */
+    margin-right:12px;
+    align-items:center;
+}
+.nav a{
+    color:rgba(255,255,255,0.95);
+    text-decoration:none;
+    font-weight:600;
+    letter-spacing:0.04em;
+    padding:8px 6px;
+    display:inline-flex;
+    align-items:center;
+}
+.nav a::after{content:'▾';margin-left:6px;font-size:0.6rem;opacity:0.85;vertical-align:middle}
+
+/* actions */
+.header-actions{display:flex;gap:12px;align-items:center;flex:0 0 auto}
+.header-actions .action{color:#fff;text-decoration:none;font-weight:500}
+.header-actions .search{background:transparent;border:none;color:#fff;font-size:1rem;cursor:pointer;padding:6px}
+
+@media(max-width:600px){
+	.header-actions{display:none}
+} 
 
 .logo-img{
     width:48px;
@@ -83,19 +155,7 @@ body{
     font-size:1.4rem;
     cursor:pointer;
     transition: transform 200ms ease;
-}
-.menu-btn i{
-    display:inline-block;
-    transition: transform 200ms ease, opacity 200ms ease;
-    font-size:1.2rem;
-    line-height:1;
-}
-.menu-btn:active i{
-    transform: scale(0.9) rotate(-10deg);
-}
-.menu-btn.open i{
-    transform: rotate(90deg) scale(1.05);
-}
+} 
 
 .btn{
     display:inline-block;
@@ -126,34 +186,22 @@ body{
 
 @media(max-width:600px){
 	.header-inner{position:relative}
-	/* start collapsed but present for transition (not display:none) */
-	.nav{
-		display:flex;
-		max-height:0;
-		overflow:hidden;
-		opacity:0;
-		transform:translateY(-8px);
-		transition: max-height 300ms ease, opacity 200ms ease, transform 250ms ease;
-		pointer-events: none; /* non-interactive until JS makes it active */
-	} 
+	.nav{display:none}
 	.nav.open{
-		max-height:600px; /* large enough to contain links */
-		opacity:1;
-		transform:translateY(0);
+		display:flex;
 		flex-direction:column;
 		gap:12px;
 		position:absolute;
 		top:100%;
 		left:0;
 		right:0;
-		/* opaque gradient to avoid seeing content underneath */
-		background: linear-gradient(90deg, #2c639e, #04305f);
+		background:#000;
 		padding:12px 20px;
 		z-index:50;
-		box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 	}
 	.menu-btn{display:block}
 	.menu-btn.open{transform:rotate(90deg)}
+	.header-actions{display:none}
 	.cards{grid-template-columns:1fr}
 	.hero h2{font-size:1.6rem}
 }
