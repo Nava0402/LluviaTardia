@@ -204,7 +204,7 @@ body{
 		position: fixed;
 		top: 0;
 		left: -100vw;
-		width: 100vw;
+		width: 90vw;
 		height: 100vh;
 		background: #000;
 		flex-direction: column;
@@ -229,7 +229,7 @@ body{
 		font-size: 1.8rem;
 		cursor: pointer;
 		transition: opacity 0.2s ease;
-		margin-bottom: 30px;
+		margin-bottom: 60px;
 	}
 	.close-btn:hover {
 		opacity: 0.8;
@@ -265,6 +265,18 @@ body{
 	.header-actions{display:none}
 	.cards{grid-template-columns:1fr}
 	.hero h2{font-size:1.6rem}
+	
+	section {
+		display: none;
+	}
+	
+	section.active {
+		display: block;
+	}
+	
+	#inicio {
+		display: block;
+	}
 }
 
 @media(min-width:601px) {

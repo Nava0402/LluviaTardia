@@ -40,6 +40,36 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 
+		// Manejar navegación en móvil - mostrar/ocultar secciones
+		const navLinks = nav.querySelectorAll('a');
+		navLinks.forEach(link => {
+			link.addEventListener('click', function(e) {
+				if (window.innerWidth <= MOBILE_BREAKPOINT) {
+					e.preventDefault();
+					
+					// Obtener el id de la sección a mostrar
+					const targetId = this.getAttribute('href').substring(1);
+					const targetSection = document.getElementById(targetId);
+					
+					if (targetSection) {
+						// Remover clase 'active' de todas las secciones
+						document.querySelectorAll('main section').forEach(section => {
+							section.classList.remove('active');
+						});
+						
+						// Agregar clase 'active' a la sección objetivo
+						targetSection.classList.add('active');
+						
+						// Scroll al inicio de la sección
+						window.scrollTo(0, 0);
+						
+						// Cerrar menú
+						setMenuState(false);
+					}
+				}
+			});
+		});
+
 		window.addEventListener('resize', () => {
 			if (window.innerWidth > MOBILE_BREAKPOINT && nav.classList.contains('open')) {
 				setMenuState(false);
