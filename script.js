@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 	const menuBtn = document.getElementById('menuBtn');
 	const nav = document.getElementById('nav');
+	const menuOverlay = document.getElementById('menu-overlay');
 	const MOBILE_BREAKPOINT = 600;
 
 	if (menuBtn && nav) {
@@ -14,12 +15,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			menuBtn.classList.toggle('open', open);
 			menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
 			header.classList.toggle('menu-open', open);
+			document.body.classList.toggle('menu-open', open);
+			menuOverlay.classList.toggle('open', open);
 			// swap symbol
 			menuBtn.textContent = open ? '✕' : '☰';
 		}
 
 		menuBtn.addEventListener('click', () => {
 			setMenuState(!nav.classList.contains('open'));
+		});
+
+		menuOverlay.addEventListener('click', () => {
+			setMenuState(false);
 		});
 
 		document.addEventListener('keydown', (e) => {
