@@ -194,19 +194,44 @@ body{
 	.nav{
 		position: fixed;
 		top: 0;
-		left: -250px;
-		width: 250px;
+		left: -100vw;
+		width: 100vw;
 		height: 100vh;
 		background: #000;
 		flex-direction: column;
-		gap: 20px;
-		padding: 80px 20px 20px;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
 		transition: left 0.3s ease;
 		z-index: 1000;
-		box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+		padding: 0;
 	}
 	.nav.open{
 		left: 0;
+	}
+	.nav a {
+		font-size: 1.5rem;
+		padding: 20px 40px;
+		background: rgba(255,255,255,0.1);
+		border-radius: 10px;
+		color: #fff;
+		text-decoration: none;
+		transition: background 0.3s ease;
+		width: 80%;
+		text-align: center;
+	}
+	.nav a:hover {
+		background: rgba(255,255,255,0.2);
+	}
+	.close-btn {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		background: transparent;
+		border: none;
+		color: #fff;
+		font-size: 2rem;
+		cursor: pointer;
 	}
 	body.menu-open{
 		overflow: hidden;

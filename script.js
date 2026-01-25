@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const menuBtn = document.getElementById('menuBtn');
 	const nav = document.getElementById('nav');
 	const menuOverlay = document.getElementById('menu-overlay');
+	const closeBtn = document.getElementById('closeBtn');
 	const MOBILE_BREAKPOINT = 600;
 
 	if (menuBtn && nav) {
@@ -23,6 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		menuBtn.addEventListener('click', () => {
 			setMenuState(!nav.classList.contains('open'));
+		});
+
+		closeBtn.addEventListener('click', () => {
+			setMenuState(false);
 		});
 
 		menuOverlay.addEventListener('click', () => {
