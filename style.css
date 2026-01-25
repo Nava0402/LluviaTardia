@@ -100,7 +100,7 @@ body{
     display:inline-flex;
     align-items:center;
 }
-.nav a::after{content:'▾';margin-left:6px;font-size:0.6rem;opacity:0.85;vertical-align:middle}
+
 
 /* actions */
 .header-actions{display:flex;gap:12px;align-items:center;flex:0 0 auto}
@@ -147,7 +147,16 @@ body{
     font-weight:500;
 }
 
-.menu-overlay {
+.menu-btn{
+    display:none;
+    background:transparent;
+    border:none;
+    color:#ffffff;
+    font-size:1.4rem;
+    cursor:pointer;
+    transition: transform 300ms ease;
+    padding: 8px 12px;
+}
     display: none;
     position: fixed;
     top: 0;
@@ -199,29 +208,16 @@ body{
 		height: 100vh;
 		background: #000;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		gap: 30px;
-		transition: left 0.3s ease;
+		justify-content: flex-start;
+		align-items: stretch;
+		gap: 0;
+		transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 		z-index: 1000;
-		padding: 0;
+		padding: 80px 20px 20px;
+		overflow-y: auto;
 	}
 	.nav.open{
 		left: 0;
-	}
-	.nav a {
-		font-size: 1.5rem;
-		padding: 20px 40px;
-		background: rgba(255,255,255,0.1);
-		border-radius: 10px;
-		color: #fff;
-		text-decoration: none;
-		transition: background 0.3s ease;
-		width: 80%;
-		text-align: center;
-	}
-	.nav a:hover {
-		background: rgba(255,255,255,0.2);
 	}
 	.close-btn {
 		position: absolute;
@@ -230,8 +226,36 @@ body{
 		background: transparent;
 		border: none;
 		color: #fff;
-		font-size: 2rem;
+		font-size: 1.8rem;
 		cursor: pointer;
+		transition: opacity 0.2s ease;
+		margin-bottom: 30px;
+	}
+	.close-btn:hover {
+		opacity: 0.8;
+	}
+	.nav a {
+		font-size: 1.3rem;
+		padding: 18px 20px;
+		background: rgba(255,255,255,0.08);
+		border-radius: 8px;
+		color: #fff;
+		text-decoration: none;
+		transition: background 0.2s ease;
+		text-align: left;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 12px;
+		font-weight: 500;
+	}
+	.nav a::after {
+		content: '›';
+		font-size: 1.8rem;
+		color: rgba(255,255,255,0.7);
+	}
+	.nav a:hover {
+		background: rgba(255,255,255,0.15);
 	}
 	body.menu-open{
 		overflow: hidden;
@@ -241,4 +265,11 @@ body{
 	.header-actions{display:none}
 	.cards{grid-template-columns:1fr}
 	.hero h2{font-size:1.6rem}
+}
+
+@media(min-width:601px) {
+	.menu-btn,
+	.close-btn {
+		display: none !important;
+	}
 }
