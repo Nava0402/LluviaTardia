@@ -156,8 +156,8 @@ body{
     cursor:pointer;
     transition: transform 300ms ease;
     padding: 8px 12px;
-}
-    display: none;
+
+
     position: fixed;
     top: 0;
     left: 0;
