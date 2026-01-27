@@ -39,6 +39,10 @@ body{
     gap:12px;
 }
 
+h2 {
+    text-align: center;
+}
+
 /* brand */
 .brand{
     display:flex;
@@ -294,9 +298,6 @@ img {
         height: auto;
         border-radius: 0;
         margin-top: 10px;
-    }
-    img.hero-img {
-        display: none;
     }
 }
 
