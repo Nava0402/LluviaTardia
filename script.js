@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	const nav = document.getElementById('nav');
 	const menuOverlay = document.getElementById('menu-overlay');
 	const closeBtn = document.getElementById('closeBtn');
+	const menuToggle = document.getElementById('menuToggle');
+	const menuText = document.querySelector('.menu-text');
 	const MOBILE_BREAKPOINT = 600;
 
 	if (menuBtn && nav) {
@@ -18,6 +20,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			header.classList.toggle('menu-open', open);
 			document.body.classList.toggle('menu-open', open);
 			menuOverlay.classList.toggle('open', open);
+			
+			// Animación del texto del menú
+			if (menuText) {
+				if (open) {
+					// Ocultar texto con animación
+					menuText.classList.add('hide');
+				} else {
+					// Mostrar texto con animación
+					menuText.classList.remove('hide');
+				}
+			}
+			
 			// swap symbol
 			menuBtn.textContent = open ? '✕' : '☰';
 		}
