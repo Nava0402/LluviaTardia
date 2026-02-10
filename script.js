@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	const menuOverlay = document.getElementById('menu-overlay');
 	const closeBtn = document.getElementById('closeBtn');
 	const menuToggle = document.getElementById('menuToggle');
-	const menuText = document.querySelector('.menu-text');
 	const MOBILE_BREAKPOINT = 600;
 
 	if (menuBtn && nav) {
@@ -20,20 +19,17 @@ document.addEventListener('DOMContentLoaded', function () {
 			header.classList.toggle('menu-open', open);
 			document.body.classList.toggle('menu-open', open);
 			menuOverlay.classList.toggle('open', open);
-			
-			// Animación del texto del menú
-			if (menuText) {
-				if (open) {
-					// Ocultar texto con animación
-					menuText.classList.add('hide');
-				} else {
-					// Mostrar texto con animación
-					menuText.classList.remove('hide');
-				}
+
+			if (menuToggle) {
+				menuToggle.classList.toggle('is-hidden', open);
 			}
-			
-			// swap symbol
-			menuBtn.textContent = open ? '✕' : '☰';
+
+			if (closeBtn) {
+				closeBtn.classList.toggle('is-visible', open);
+			}
+
+			// keep hamburger visible text when toggle is shown
+			menuBtn.textContent = '☰';
 		}
 
 		menuBtn.addEventListener('click', () => {

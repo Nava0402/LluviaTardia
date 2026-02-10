@@ -187,12 +187,7 @@ nav a:hover{
 .menu-text {
     display: none;
     opacity: 1;
-    transition: opacity 0.3s ease;
-} 
-
-.menu-text.hide {
-    opacity: 0;
-    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .btn{
@@ -289,9 +284,17 @@ img {
 		color: #fff;
 		font-size: 1.8rem;
 		cursor: pointer;
-		transition: opacity 0.2s ease;
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
 		margin-bottom: 60px;
 	}
+    .close-btn.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
 	.close-btn:hover {
 		opacity: 0.8;
 	}
@@ -329,17 +332,24 @@ img {
 	.menu-btn.open{
 		transform: rotate(90deg);
 	}
+    .menu-toggle{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .menu-toggle.is-hidden{
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+        pointer-events: none;
+    }
 	.menu-text {
 		display: inline-block;
 		color: #fff;
 		font-size: 0.9rem;
 		margin-right: 8px;
 		opacity: 1;
-		transition: opacity 0.3s ease;
-	}
-	.menu-text.hide {
-		opacity: 0;
-		display: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
 	}
 	.header-actions{display:none}
 	.cards{grid-template-columns:1fr}
