@@ -236,6 +236,10 @@ img {
     margin-top: 0;
 }
 
+.hero p {
+    text-align: justify;
+}
+
 .mobile-church-image {
 	display: none;
 }
@@ -246,7 +250,7 @@ img {
 		width: 100%;
 		height: auto;
 		border-radius: 10px;
-		margin: 20px 0;
+		margin: 10px 0;
 	}
 	.desktop-church-image {
 		display: none;
