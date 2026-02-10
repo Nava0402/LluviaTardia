@@ -32,9 +32,15 @@ document.addEventListener('DOMContentLoaded', function () {
 			menuBtn.textContent = '☰';
 		}
 
-		menuBtn.addEventListener('click', () => {
-			setMenuState(!nav.classList.contains('open'));
-		});
+		if (menuToggle) {
+			menuToggle.addEventListener('click', () => {
+				setMenuState(!nav.classList.contains('open'));
+			});
+		} else {
+			menuBtn.addEventListener('click', () => {
+				setMenuState(!nav.classList.contains('open'));
+			});
+		}
 
 		closeBtn.addEventListener('click', () => {
 			setMenuState(false);

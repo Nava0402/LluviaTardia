@@ -285,14 +285,14 @@ img {
 		font-size: 1.8rem;
 		cursor: pointer;
         opacity: 0;
-        transform: translateY(-8px);
+        transform: translateY(-8px) scale(0.9) rotate(-90deg);
         pointer-events: none;
         transition: opacity 0.25s ease, transform 0.25s ease;
 		margin-bottom: 60px;
 	}
     .close-btn.is-visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1) rotate(0deg);
         pointer-events: auto;
     }
 	.close-btn:hover {
