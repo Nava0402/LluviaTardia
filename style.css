@@ -266,6 +266,43 @@ img {
     max-width: 900px;
 }
 
+.servicios-page{
+    background: none;
+    color: #0f172a;
+    padding: 40px 0 60px;
+}
+
+.servicios-page::before{
+    display: none;
+}
+
+.servicios-gallery{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.servicios-item{
+    margin: 0;
+}
+
+.servicios-item img{
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+@media(max-width:600px){
+    .servicios-page{
+        padding: 24px 0 40px;
+    }
+    .servicios-gallery{
+        gap: 18px;
+    }
+}
+
 .mobile-church-image {
 	display: none;
 }
