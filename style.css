@@ -243,7 +243,7 @@ img {
 .servicios{
     display: none;
     position: relative;
-    background: url("img/serviciosjue.jpg") center/cover no-repeat;
+    background: url("img/ServiciosJue.jpg") center/cover no-repeat;
     color: #ffffff;
     padding: 120px 0;
 }
