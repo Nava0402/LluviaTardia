@@ -306,8 +306,10 @@ img {
     position: absolute;
     inset: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 6px;
     padding: 16px;
     color: #ffffff;
     font-weight: 700;
@@ -316,6 +318,16 @@ img {
     text-transform: uppercase;
     text-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+.servicios-caption-title{
+    display: block;
+}
+
+.servicios-caption-time{
+    display: block;
+    font-size: clamp(0.9rem, 2vw, 1.5rem);
+    letter-spacing: 0.14em;
 }
 
 .servicios-item img:hover{
