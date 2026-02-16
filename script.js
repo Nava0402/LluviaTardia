@@ -61,5 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				setMenuState(false);
 			}
 		});
+
 	}
 });
