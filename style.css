@@ -342,14 +342,6 @@ img {
     }
     .servicios-gallery{
         gap: 18px;
-        margin-left: -20px;
-        margin-right: -20px;
-    }
-    .servicios-item{
-        border-radius: 0;
-    }
-    .servicios-item img{
-        border-radius: 0;
     }
 }
 
