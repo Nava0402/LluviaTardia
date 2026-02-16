@@ -1,5 +1,5 @@
 :root{
-    --bg: #fbfcfe;
+    --bg: #f6f3ef;
     --primary: #063970;
     --muted: #6b7280;
     --card: #ffffff;
@@ -269,7 +269,7 @@ img {
 .servicios-page,
 .page-section{
     display: block;
-    background: linear-gradient(180deg, #f6f3ef 0%, #efe9e2 100%);
+    background: var(--bg);
     color: #0f172a;
     padding: 40px 0 60px;
 }
