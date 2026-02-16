@@ -337,9 +337,9 @@ img {
 
 .social-links{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    max-width: 650px;
+    max-width: 500px;
     margin: 40px auto 0;
 }
 
@@ -378,11 +378,6 @@ img {
     .social-link{
         padding: 18px 10px;
         font-size: 0.9rem;
-    }
-    .social-link:last-child{
-        grid-column: span 2;
-        max-width: 50%;
-        margin: 0 auto;
     }
     .servicios-page,
     .page-section{
