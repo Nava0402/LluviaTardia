@@ -626,12 +626,12 @@ img {
     .inicio-cards{
         grid-template-columns: 1fr;
         gap: 14px;
-        margin-left: -20px;
-        margin-right: -20px;
+        margin-left: 0;
+        margin-right: 0;
     }
     .inicio-card{
         min-height: 110px;
-        border-radius: 0;
+        border-radius: 14px;
     }
     #inicio .hero-images {
         margin-left: -20px;
