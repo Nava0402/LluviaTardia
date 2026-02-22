@@ -155,6 +155,11 @@ nav a:hover{
     box-shadow: inset 0 -2px 0 0 #ffffff;
 }
 
+.nav a[aria-current="page"]{
+    box-shadow: inset 0 -2px 0 0 #ffffff;
+    color: #ffffff;
+}
+
 .menu-btn{
     display:none;
     background:transparent;
@@ -528,6 +533,9 @@ img {
 	.nav a:hover {
 		background: rgba(255,255,255,0.15);
 	}
+    .nav a[aria-current="page"] {
+        background: rgba(255,255,255,0.2);
+    }
 	body.menu-open{
 		overflow: hidden;
 	}
