@@ -435,6 +435,7 @@ img {
 		position: absolute;
 		top: 20px;
 		right: 20px;
+        z-index: 2;
 		background: transparent;
 		border: none;
 		color: #fff;
@@ -446,7 +447,8 @@ img {
         transition: opacity 0.25s ease, transform 0.25s ease;
 		margin-bottom: 60px;
 	}
-	.nav.open .close-btn {
+	.nav.open .close-btn,
+	.close-btn.is-visible {
         opacity: 1;
         transform: translateY(0) scale(1) rotate(0deg);
         pointer-events: auto;
