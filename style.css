@@ -236,6 +236,62 @@ img {
     margin-top: 0;
 }
 
+#inicio .hero-images {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+#inicio .hero-images .hero-img {
+    width: min(100%, 820px);
+    justify-self: center;
+}
+
+.inicio-cards{
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.inicio-card{
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    min-height: 300px;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.22);
+}
+
+.inicio-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-top: 0;
+    border-radius: 0;
+}
+
+.inicio-card-content{
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 18px 16px;
+    color: #ffffff;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.72) 100%);
+}
+
+.inicio-card-content h3{
+    margin: 0 0 6px;
+    text-align: left;
+}
+
+.inicio-card-content p{
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
 .hero p {
     text-align: justify;
 }
@@ -571,6 +627,26 @@ img {
 	.hero-images {
 		grid-template-columns: 1fr;
 	}
+    .inicio-cards{
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+    .inicio-card{
+        min-height: 250px;
+        border-radius: 0;
+    }
+    #inicio .hero-images {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+    #inicio .hero-images .hero-img {
+        width: 100%;
+        max-width: none;
+        border-radius: 0;
+        margin-top: 0;
+    }
     img {
         width: 100%;
         height: auto;
