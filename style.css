@@ -446,7 +446,7 @@ img {
         transition: opacity 0.25s ease, transform 0.25s ease;
 		margin-bottom: 60px;
 	}
-    .close-btn.is-visible {
+	.nav.open .close-btn {
         opacity: 1;
         transform: translateY(0) scale(1) rotate(0deg);
         pointer-events: auto;

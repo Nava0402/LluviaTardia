@@ -24,10 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				menuToggle.classList.toggle('is-hidden', open);
 			}
 
-			if (closeBtn) {
-				closeBtn.classList.toggle('is-visible', open);
-			}
-
 			// keep hamburger visible text when toggle is shown
 			menuBtn.textContent = '☰';
 		}
@@ -42,9 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 
-		closeBtn.addEventListener('click', () => {
-			setMenuState(false);
-		});
+		if (closeBtn) {
+			closeBtn.addEventListener('click', () => {
+				setMenuState(false);
+			});
+		}
 
 		menuOverlay.addEventListener('click', () => {
 			setMenuState(false);
