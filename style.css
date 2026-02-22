@@ -415,6 +415,13 @@ img {
         grid-template-rows: auto;
         gap: 14px;
     }
+    .anuncio-card{
+        aspect-ratio: 4 / 5;
+    }
+    .anuncio-card img{
+        height: 100%;
+        object-fit: cover;
+    }
     .anuncio-card-main,
     .anuncio-card-side{
         min-height: 0;
