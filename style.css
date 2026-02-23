@@ -479,9 +479,7 @@ img {
 .devocional-card{
     width: min(100%, 760px);
     padding: 26px 46px 26px;
-    background:
-        radial-gradient(circle at right 6%, rgba(153, 180, 201, 0.34) 0%, rgba(153, 180, 201, 0) 30%),
-        #f0ece5;
+    background: #f0ece5;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
 }
 
@@ -532,16 +530,16 @@ img {
         min-height: 0;
     }
     .devocional-page{
-        padding: 0;
+        padding: 18px 0 28px;
     }
     .devocional-page .container{
-        padding: 0;
+        padding: 0 14px;
     }
     .devocional-card{
         width: 100%;
-        border-radius: 0;
+        border-radius: 12px;
         padding: 24px 18px;
-        box-shadow: none;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
     }
     .devocional-title{
         margin-bottom: 8px;
