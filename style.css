@@ -466,6 +466,61 @@ img {
     min-height: 0;
 }
 
+.devocional-page{
+    background: #d3d5db;
+    padding: 36px 0 56px;
+}
+
+.devocional-page .container{
+    display: flex;
+    justify-content: center;
+}
+
+.devocional-card{
+    width: min(100%, 760px);
+    padding: 26px 46px 26px;
+    background:
+        radial-gradient(circle at right 6%, rgba(153, 180, 201, 0.34) 0%, rgba(153, 180, 201, 0) 30%),
+        #f0ece5;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.devocional-title{
+    margin: 0 0 6px;
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.65rem);
+    font-weight: 700;
+    color: #000;
+    letter-spacing: 0.01em;
+}
+
+.devocional-quote{
+    margin: 0 0 16px;
+    text-align: center;
+    font-style: italic;
+    font-size: clamp(0.95rem, 1.9vw, 1.25rem);
+    line-height: 1.45;
+    color: #111827;
+}
+
+.devocional-quote span{
+    font-style: italic;
+    font-size: clamp(0.86rem, 1.6vw, 1rem);
+    letter-spacing: 0.02em;
+}
+
+.devocional-body p{
+    margin: 0 0 14px;
+    text-align: center;
+    font-size: clamp(0.9rem, 1.52vw, 1.03rem);
+    line-height: 1.45;
+    color: #0f172a;
+}
+
+.devocional-body p:last-child{
+    margin-bottom: 0;
+}
+
 @media(max-width:600px){
     .anuncios-grid{
         grid-template-columns: 1fr;
@@ -475,6 +530,28 @@ img {
     .anuncio-card-main,
     .anuncio-card-side{
         min-height: 0;
+    }
+    .devocional-page{
+        padding: 0;
+    }
+    .devocional-page .container{
+        padding: 0;
+    }
+    .devocional-card{
+        width: 100%;
+        border-radius: 0;
+        padding: 24px 18px;
+        box-shadow: none;
+    }
+    .devocional-title{
+        margin-bottom: 8px;
+    }
+    .devocional-quote{
+        margin-bottom: 14px;
+    }
+    .devocional-body p{
+        font-size: 0.94rem;
+        margin-bottom: 12px;
     }
     .social-links{
         grid-template-columns: repeat(2, 1fr);
