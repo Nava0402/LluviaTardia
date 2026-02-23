@@ -66,70 +66,90 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	}
 
-	const eventosCollageBtn = document.getElementById('eventosCollageBtn');
 	const eventosSlider = document.getElementById('eventosSlider');
+	const eventosSliderFrame = document.getElementById('eventosSliderFrame');
 	const eventosSliderImg = document.getElementById('eventosSliderImg');
-	const eventosSliderCaption = document.getElementById('eventosSliderCaption');
-	const eventosSliderClose = document.getElementById('eventosSliderClose');
+	const eventosSliderTitle = document.getElementById('eventosSliderTitle');
+	const eventosSliderDots = document.getElementById('eventosSliderDots');
 	const eventosPrev = document.getElementById('eventosPrev');
 	const eventosNext = document.getElementById('eventosNext');
 
-	if (eventosCollageBtn && eventosSlider && eventosSliderImg && eventosSliderCaption) {
-		const eventosImages = [
-			'img/BryanC1.jpg',
-			'img/BryanC2.jpg',
-			'img/BryanC3.jpg',
-			'img/BryanC4.jpg',
-			'img/BryanC5.jpg'
+	if (eventosSlider && eventosSliderFrame && eventosSliderImg && eventosSliderTitle && eventosSliderDots) {
+		const eventosSlides = [
+			{ src: 'img/BryanC1.jpg', title: 'Bryan Caro "Transformación"' },
+			{ src: 'img/BryanC2.jpg', title: 'Bryan Caro "Transformación"' },
+			{ src: 'img/BryanC3.jpg', title: 'Bryan Caro "Transformación"' },
+			{ src: 'img/BryanC4.jpg', title: 'Bryan Caro "Transformación"' },
+			{ src: 'img/BryanC5.jpg', title: 'Bryan Caro "Transformación"' }
 		];
 
+		eventosSlides.forEach((slide) => {
+			const preloadedImage = new Image();
+			preloadedImage.src = slide.src;
+		});
+
 		let currentIndex = 0;
+		const dotButtons = [];
+		const AUTOPLAY_DELAY = 4500;
+		let autoplayTimer = null;
+
+		eventosSlides.forEach((slide, index) => {
+			const dot = document.createElement('span');
+			dot.className = 'eventos-slider-dot';
+			eventosSliderDots.appendChild(dot);
+			dotButtons.push(dot);
+		});
 
 		function renderSlide() {
-			eventosSliderImg.src = eventosImages[currentIndex];
-			eventosSliderCaption.textContent = `${currentIndex + 1} / ${eventosImages.length}`;
+			const activeSlide = eventosSlides[currentIndex];
+			eventosSliderImg.src = activeSlide.src;
+			eventosSliderTitle.textContent = activeSlide.title;
+			eventosSliderFrame.classList.toggle('is-clean-slide', currentIndex !== 0);
+			dotButtons.forEach((dot, index) => {
+				dot.classList.toggle('active', index === currentIndex);
+			});
 		}
 
-		function openSlider(index) {
-			currentIndex = index;
+		function changeSlide(nextIndex) {
+			if (nextIndex === currentIndex) return;
+			currentIndex = nextIndex;
 			renderSlide();
-			eventosSlider.classList.add('open');
-			eventosSlider.setAttribute('aria-hidden', 'false');
-			document.body.classList.add('menu-open');
-		}
-
-		function closeSlider() {
-			eventosSlider.classList.remove('open');
-			eventosSlider.setAttribute('aria-hidden', 'true');
-			document.body.classList.remove('menu-open');
 		}
 
 		function goToNext() {
-			currentIndex = (currentIndex + 1) % eventosImages.length;
-			renderSlide();
+			const nextIndex = (currentIndex + 1) % eventosSlides.length;
+			changeSlide(nextIndex);
 		}
 
 		function goToPrev() {
-			currentIndex = (currentIndex - 1 + eventosImages.length) % eventosImages.length;
-			renderSlide();
+			const prevIndex = (currentIndex - 1 + eventosSlides.length) % eventosSlides.length;
+			changeSlide(prevIndex);
 		}
 
-		eventosCollageBtn.addEventListener('click', () => openSlider(0));
+		function startAutoplay() {
+			if (autoplayTimer) clearInterval(autoplayTimer);
+			autoplayTimer = setInterval(goToNext, AUTOPLAY_DELAY);
+		}
+
+		function stopAutoplay() {
+			if (!autoplayTimer) return;
+			clearInterval(autoplayTimer);
+			autoplayTimer = null;
+		}
+
 		eventosNext?.addEventListener('click', goToNext);
 		eventosPrev?.addEventListener('click', goToPrev);
-		eventosSliderClose?.addEventListener('click', closeSlider);
-
-		eventosSlider.addEventListener('click', (event) => {
-			if (event.target === eventosSlider) {
-				closeSlider();
-			}
-		});
+		eventosSlider.addEventListener('mouseenter', stopAutoplay);
+		eventosSlider.addEventListener('mouseleave', startAutoplay);
+		eventosSlider.addEventListener('focusin', stopAutoplay);
+		eventosSlider.addEventListener('focusout', startAutoplay);
 
 		document.addEventListener('keydown', (event) => {
-			if (!eventosSlider.classList.contains('open')) return;
 			if (event.key === 'ArrowRight') goToNext();
 			if (event.key === 'ArrowLeft') goToPrev();
-			if (event.key === 'Escape') closeSlider();
 		});
+
+		renderSlide();
+		startAutoplay();
 	}
 });
