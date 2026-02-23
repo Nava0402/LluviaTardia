@@ -650,7 +650,7 @@ img {
     }
     .eventos-collage{
         grid-template-columns: 1fr;
-        border-radius: 12px;
+        border-radius: 0 0 12px 12px;
     }
     .eventos-cover{
         min-height: 320px;
