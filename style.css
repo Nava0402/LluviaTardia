@@ -387,6 +387,16 @@ img {
     letter-spacing: 0.14em;
 }
 
+.servicios-caption-time-line{
+    display: block;
+    font-size: inherit;
+    letter-spacing: inherit;
+}
+
+.servicios-caption-time-line-tight{
+    letter-spacing: 0.06em;
+}
+
 .servicios-item img:hover{
     transform: translateY(-6px) scale(1.01);
     box-shadow: 0 30px 60px rgba(15, 23, 42, 0.28);
