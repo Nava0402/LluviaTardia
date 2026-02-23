@@ -152,4 +152,86 @@ document.addEventListener('DOMContentLoaded', function () {
 		renderSlide();
 		startAutoplay();
 	}
+
+	const eventosCollageBtn = document.getElementById('eventosCollageBtn');
+	const eventosModal = document.getElementById('eventosModal');
+	const eventosModalImg = document.getElementById('eventosModalImg');
+	const eventosModalDots = document.getElementById('eventosModalDots');
+	const eventosModalPrev = document.getElementById('eventosModalPrev');
+	const eventosModalNext = document.getElementById('eventosModalNext');
+	const eventosModalClose = document.getElementById('eventosModalClose');
+
+	if (eventosCollageBtn && eventosModal && eventosModalImg && eventosModalDots) {
+		const modalSlides = [
+			'img/BryanC1.jpg',
+			'img/BryanC2.jpg',
+			'img/BryanC3.jpg',
+			'img/BryanC4.jpg',
+			'img/BryanC5.jpg'
+		];
+
+		modalSlides.forEach((src) => {
+			const preloadedImage = new Image();
+			preloadedImage.src = src;
+		});
+
+		let modalIndex = 0;
+		const modalDotItems = [];
+
+		modalSlides.forEach(() => {
+			const dot = document.createElement('span');
+			dot.className = 'eventos-modal-dot';
+			eventosModalDots.appendChild(dot);
+			modalDotItems.push(dot);
+		});
+
+		function renderModalSlide() {
+			eventosModalImg.src = modalSlides[modalIndex];
+			modalDotItems.forEach((dot, index) => {
+				dot.classList.toggle('active', index === modalIndex);
+			});
+		}
+
+		function openModal(index) {
+			modalIndex = index;
+			renderModalSlide();
+			eventosModal.classList.add('open');
+			eventosModal.setAttribute('aria-hidden', 'false');
+			document.body.classList.add('menu-open');
+		}
+
+		function closeModal() {
+			eventosModal.classList.remove('open');
+			eventosModal.setAttribute('aria-hidden', 'true');
+			document.body.classList.remove('menu-open');
+		}
+
+		function modalNext() {
+			modalIndex = (modalIndex + 1) % modalSlides.length;
+			renderModalSlide();
+		}
+
+		function modalPrev() {
+			modalIndex = (modalIndex - 1 + modalSlides.length) % modalSlides.length;
+			renderModalSlide();
+		}
+
+		eventosCollageBtn.addEventListener('click', () => openModal(0));
+		eventosModalNext?.addEventListener('click', modalNext);
+		eventosModalPrev?.addEventListener('click', modalPrev);
+		eventosModalClose?.addEventListener('click', closeModal);
+
+		eventosModal.addEventListener('click', (event) => {
+			if (event.target === eventosModal) {
+				closeModal();
+			}
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (!eventosModal.classList.contains('open')) return;
+			if (event.key === 'ArrowRight') modalNext();
+			if (event.key === 'ArrowLeft') modalPrev();
+			if (event.key === 'Escape') closeModal();
+		});
+	}
 });

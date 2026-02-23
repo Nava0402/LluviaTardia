@@ -47,18 +47,28 @@
                 <p>Mira recuerdos de los eventos que hemos vivido en casa.</p>
             </div>
 
-            <div class="container eventos-slider-wrap">
-            <div class="eventos-slider" id="eventosSlider" aria-label="Galería Bryan Caro Transformación">
-                <button class="eventos-slider-nav prev" type="button" id="eventosPrev" aria-label="Imagen anterior">❮</button>
-                <figure class="eventos-slider-frame" id="eventosSliderFrame">
-                    <img id="eventosSliderImg" src="img/BryanC1.jpg" alt="Foto del evento">
-                    <figcaption class="eventos-slider-overlay">
-                        <h4 id="eventosSliderTitle">Bryan Caro "Transformación"</h4>
-                    </figcaption>
-                    <div class="eventos-slider-dots" id="eventosSliderDots" aria-hidden="true"></div>
-                </figure>
-                <button class="eventos-slider-nav next" type="button" id="eventosNext" aria-label="Imagen siguiente">❯</button>
+            <div class="container eventos-collage-wrap">
+                <h3 class="eventos-collage-title">Bryan Caro "Transformación"</h3>
+                <button class="eventos-collage" type="button" id="eventosCollageBtn" aria-label="Abrir galería de eventos">
+                    <img class="eventos-cover" src="img/BryanC1.jpg" alt="Portada del evento BryanC">
+                    <div class="eventos-thumbs" aria-hidden="true">
+                        <img src="img/BryanC2.jpg" alt="">
+                        <img src="img/BryanC3.jpg" alt="">
+                        <img src="img/BryanC4.jpg" alt="">
+                        <img src="img/BryanC5.jpg" alt="">
+                    </div>
+                    <span class="eventos-collage-label">Ver galería</span>
+                </button>
             </div>
+
+            <div class="eventos-modal" id="eventosModal" aria-hidden="true">
+                <button class="eventos-modal-close" type="button" id="eventosModalClose" aria-label="Cerrar galería">✕</button>
+                <button class="eventos-modal-nav prev" type="button" id="eventosModalPrev" aria-label="Imagen anterior">❮</button>
+                <figure class="eventos-modal-frame">
+                    <img id="eventosModalImg" src="img/BryanC1.jpg" alt="Foto del evento">
+                    <div class="eventos-modal-dots" id="eventosModalDots" aria-hidden="true"></div>
+                </figure>
+                <button class="eventos-modal-nav next" type="button" id="eventosModalNext" aria-label="Imagen siguiente">❯</button>
             </div>
         </section>
     </main>
