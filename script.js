@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		startAutoplay();
 	}
 
-	const eventosCollageBtn = document.getElementById('eventosCollageBtn');
+	const eventosCollageBtns = document.querySelectorAll('.eventos-collage[data-gallery]');
 	const eventosModal = document.getElementById('eventosModal');
 	const eventosModalImg = document.getElementById('eventosModalImg');
 	const eventosModalDots = document.getElementById('eventosModalDots');
@@ -161,29 +161,50 @@ document.addEventListener('DOMContentLoaded', function () {
 	const eventosModalNext = document.getElementById('eventosModalNext');
 	const eventosModalClose = document.getElementById('eventosModalClose');
 
-	if (eventosCollageBtn && eventosModal && eventosModalImg && eventosModalDots) {
-		const modalSlides = [
-			'img/BryanC1.jpg',
-			'img/BryanC2.jpg',
-			'img/BryanC3.jpg',
-			'img/BryanC4.jpg',
-			'img/BryanC5.jpg'
-		];
+	if (eventosCollageBtns.length && eventosModal && eventosModalImg && eventosModalDots) {
+		const modalGalleries = {
+			bryanc: [
+				'img/BryanC1.jpg',
+				'img/BryanC2.jpg',
+				'img/BryanC3.jpg',
+				'img/BryanC4.jpg',
+				'img/BryanC5.jpg'
+			],
+			prim: [
+				'img/Prim1.jpg',
+				'img/Prim2.jpg',
+				'img/Prim3.jpg',
+				'img/Prim4.jpg',
+				'img/Prim5.jpg'
+			],
+			carlosg: [
+				'img/CarlosG1.jpg',
+				'img/CarlosG2.jpg',
+				'img/CarlosG3.jpg',
+				'img/CarlosG4.jpg',
+				'img/CarlosG5.jpg'
+			]
+		};
 
-		modalSlides.forEach((src) => {
+		Object.values(modalGalleries).flat().forEach((src) => {
 			const preloadedImage = new Image();
 			preloadedImage.src = src;
 		});
 
+		let modalSlides = modalGalleries.bryanc;
 		let modalIndex = 0;
 		const modalDotItems = [];
 
-		modalSlides.forEach(() => {
-			const dot = document.createElement('span');
-			dot.className = 'eventos-modal-dot';
-			eventosModalDots.appendChild(dot);
-			modalDotItems.push(dot);
-		});
+		function rebuildDots() {
+			eventosModalDots.innerHTML = '';
+			modalDotItems.length = 0;
+			modalSlides.forEach(() => {
+				const dot = document.createElement('span');
+				dot.className = 'eventos-modal-dot';
+				eventosModalDots.appendChild(dot);
+				modalDotItems.push(dot);
+			});
+		}
 
 		function renderModalSlide() {
 			eventosModalImg.src = modalSlides[modalIndex];
@@ -192,8 +213,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 
-		function openModal(index) {
+		function openModal(galleryKey, index) {
+			modalSlides = modalGalleries[galleryKey] || modalGalleries.bryanc;
 			modalIndex = index;
+			rebuildDots();
 			renderModalSlide();
 			eventosModal.classList.add('open');
 			eventosModal.setAttribute('aria-hidden', 'false');
@@ -216,7 +239,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			renderModalSlide();
 		}
 
-		eventosCollageBtn.addEventListener('click', () => openModal(0));
+		eventosCollageBtns.forEach((button) => {
+			button.addEventListener('click', () => openModal(button.dataset.gallery, 0));
+		});
 		eventosModalNext?.addEventListener('click', modalNext);
 		eventosModalPrev?.addEventListener('click', modalPrev);
 		eventosModalClose?.addEventListener('click', closeModal);
