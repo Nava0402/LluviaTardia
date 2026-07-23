@@ -850,6 +850,25 @@ img {
     .anuncio-card-side{
         min-height: 0;
     }
+    .anuncios-month-select-wrap{
+        margin-top: 20px;
+        padding: 0 4px;
+        gap: 6px;
+    }
+    .anuncios-month-label{
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    .anuncios-month-select{
+        width: 100%;
+        min-width: 0;
+    }
+    .anuncios-month-block{
+        margin-top: 16px;
+    }
+    .anuncios-empty-message{
+        padding: 0 16px;
+    }
     .eventos-slider{
         width: 100%;
     }
