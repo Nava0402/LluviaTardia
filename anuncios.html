@@ -41,23 +41,65 @@
     <div id="menu-overlay" class="menu-overlay"></div>
 
     <main>
-        <section id="anuncios" class="page-section">
-            <div class="container servicios-content">
-                <h2>Anuncios</h2>
-                <p>Aquí puedes ver los anuncios de nuestros próximos eventos.</p>
-                <div class="anuncios-grid" aria-label="Galería de anuncios">
-                    <figure class="anuncio-card anuncio-card-main">
-                        <img src="img/anuncios3.jpg" alt="Anuncio principal de la semana">
-                    </figure>
-                    <figure class="anuncio-card anuncio-card-side anuncio-card-left">
-                        <img src="img/anuncios2.jpg" alt="Segundo anuncio de la semana">
-                    </figure>
-                    <figure class="anuncio-card anuncio-card-side anuncio-card-right">
-                        <img src="img/anuncios.jpg" alt="Tercer anuncio de la semana">
-                    </figure>
-                </div>
+<section id="anuncios" class="page-section">
+    <div class="container servicios-content">
+        <h2>Anuncios</h2>
+        <p>Aquí puedes ver los anuncios de nuestros próximos eventos.</p>
+    </div>
+
+    <div class="container eventos-collage-wrap">
+        <h3 class="eventos-collage-title">Enero</h3>
+        <button class="eventos-collage" type="button" data-gallery="anuncios" aria-label="Abrir galería de anuncios">
+            <img class="eventos-cover" src="img/anuncios3.jpg" alt="Anuncio principal de la semana">
+            <div class="eventos-thumbs eventos-thumbs-two" aria-hidden="true">
+                <img src="img/anuncios2.jpg" alt="">
+                <img src="img/anuncios.jpg" alt="">
             </div>
-        </section>
+            <span class="eventos-collage-label">Ver galería</span>
+        </button>
+    </div>
+
+<div class="container anuncios-month-select-wrap">
+        <label for="anunciosMonthSelect" class="anuncios-month-label">Selecciona un mes</label>
+        <select id="anunciosMonthSelect" class="anuncios-month-select">
+            <option value="" selected>Ninguno</option>
+            <option value="enero">Enero</option>
+            <option value="febrero">Febrero</option>
+            <option value="marzo">Marzo</option>
+            <option value="abril">Abril</option>
+            <option value="mayo">Mayo</option>
+            <option value="junio">Junio</option>
+            <option value="julio">Julio</option>
+            <option value="agosto">Agosto</option>
+            <option value="septiembre">Septiembre</option>
+            <option value="octubre">Octubre</option>
+            <option value="noviembre">Noviembre</option>
+            <option value="diciembre">Diciembre</option>
+        </select>
+    </div>
+    <div class="container eventos-collage-wrap anuncios-month-block" id="anunciosMonthBlock" hidden>
+        <h3 class="eventos-collage-title" id="anunciosMonthTitle">Eventos del mes</h3>
+        <button class="eventos-collage" type="button" data-gallery="anuncios" aria-label="Abrir galería de anuncios del mes">
+            <img class="eventos-cover" src="img/anuncios3.jpg" alt="Anuncio principal del mes">
+            <div class="eventos-thumbs eventos-thumbs-two" aria-hidden="true">
+                <img src="img/anuncios2.jpg" alt="">
+                <img src="img/anuncios.jpg" alt="">
+            </div>
+            <span class="eventos-collage-label">Ver galería</span>
+        </button>
+        <p class="anuncios-empty-message" id="anunciosEmptyMessage" hidden>Aún no hay anuncios publicados para este mes.</p>
+    </div>
+
+    <div class="eventos-modal" id="eventosModal" aria-hidden="true">
+        <button class="eventos-modal-close" type="button" id="eventosModalClose" aria-label="Cerrar galería">✕</button>
+        <button class="eventos-modal-nav prev" type="button" id="eventosModalPrev" aria-label="Imagen anterior">❮</button>
+        <figure class="eventos-modal-frame">
+            <img id="eventosModalImg" src="img/anuncios3.jpg" alt="Foto del anuncio">
+            <div class="eventos-modal-dots" id="eventosModalDots" aria-hidden="true"></div>
+        </figure>
+        <button class="eventos-modal-nav next" type="button" id="eventosModalNext" aria-label="Imagen siguiente">❯</button>
+    </div>
+</section>
     </main>
 
     <script src="script.js"></script>

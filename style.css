@@ -53,8 +53,8 @@ h2 {
     margin-left:24px;
 }
 .brand-img{
-    width:72px;
-    height:72px;
+    width:80px;
+    height:80px;
     display:block;
     border-radius:50%;
     object-fit:cover; /* in case you add an image */
@@ -476,6 +476,41 @@ img {
     min-height: 0;
 }
 
+.anuncios-month-select-wrap{
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.anuncios-month-label{
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.anuncios-month-select{
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.25);
+    background: #fff;
+    font-family: var(--font-base);
+    font-size: 0.95rem;
+    color: #0f172a;
+    min-width: 220px;
+    cursor: pointer;
+}
+
+.anuncios-month-block{
+    margin-top: 20px;
+}
+
+.anuncios-empty-message{
+    text-align: center;
+    color: var(--muted);
+    margin-top: 16px;
+}
+
 .eventos-slider-wrap{
     margin-top: 24px;
 }
@@ -530,6 +565,11 @@ img {
     gap: 8px;
     background: #0f172a;
     padding: 8px;
+}
+
+.eventos-thumbs.eventos-thumbs-two{
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .eventos-collage-label{

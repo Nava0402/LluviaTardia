@@ -6,8 +6,43 @@ document.addEventListener('DOMContentLoaded', function () {
 	const menuToggle = document.getElementById('menuToggle');
 	const MOBILE_BREAKPOINT = 600;
 
+	const anunciosMonthSelect = document.getElementById('anunciosMonthSelect');
+	const anunciosMonthBlock = document.getElementById('anunciosMonthBlock');
+	const anunciosMonthTitle = document.getElementById('anunciosMonthTitle');
+	const anunciosEmptyMessage = document.getElementById('anunciosEmptyMessage');
+	const anunciosMonthGalleryBtn = anunciosMonthBlock?.querySelector('.eventos-collage');
+
+	// Agrega aquí cada mes cuando tengan anuncios cargados en modalGalleries (más abajo en este archivo).
+	const monthAnuncios = {
+		julio: { title: 'Eventos de Julio', gallery: 'anuncios' }
+	};
+
+	anunciosMonthSelect?.addEventListener('change', () => {
+        const month = anunciosMonthSelect.value;
+
+        if (!month) {
+            anunciosMonthBlock.hidden = true;
+            return;
+        }
+
+        const data = monthAnuncios[month];
+        const monthLabel = anunciosMonthSelect.options[anunciosMonthSelect.selectedIndex].text;
+
+        anunciosMonthBlock.hidden = false;
+
+        if (data) {
+            anunciosMonthTitle.textContent = data.title;
+            anunciosMonthGalleryBtn.dataset.gallery = data.gallery;
+            anunciosMonthGalleryBtn.hidden = false;
+            anunciosEmptyMessage.hidden = true;
+        } else {
+            anunciosMonthTitle.textContent = `Eventos de ${monthLabel}`;
+            anunciosMonthGalleryBtn.hidden = true;
+            anunciosEmptyMessage.hidden = false;
+        }
+    });
+
 	if (menuBtn && nav) {
-		// ensure aria-expanded exists
 		if (!menuBtn.hasAttribute('aria-expanded')) menuBtn.setAttribute('aria-expanded', 'false');
 
 		const header = document.querySelector('.site-header');
@@ -183,7 +218,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				'img/CarlosG3.jpg',
 				'img/CarlosG4.jpg',
 				'img/CarlosG5.jpg'
-			]
+			],
+			anuncios: [
+        		'img/anuncios3.jpg',
+        		'img/anuncios2.jpg',
+        		'img/anuncios.jpg'
+    		]
 		};
 
 		Object.values(modalGalleries).flat().forEach((src) => {
