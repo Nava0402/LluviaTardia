@@ -909,6 +909,11 @@ img {
         grid-template-rows: minmax(0, 1fr);
         gap: 6px;
     }
+    .eventos-thumbs.eventos-thumbs-two{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: minmax(0, 1fr);
+        gap: 6px;
+    }
     .eventos-modal{
         padding: 12px;
         gap: 6px;
