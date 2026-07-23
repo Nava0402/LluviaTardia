@@ -1009,6 +1009,7 @@ img {
 		left: -100vw;
 		width: 100vw;
 		height: 100vh;
+		height: 100dvh;
 		background: #000;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -1018,6 +1019,9 @@ img {
 		z-index: 1000;
 		padding: 80px 20px 20px;
 		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		overscroll-behavior: contain;
+		touch-action: pan-y;
 	}
 	.nav.open{
 		left: 0;
