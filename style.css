@@ -82,8 +82,8 @@ h2 {
 @media(max-width:600px){
     .brand{margin-left:12px}
     .brand-img{width:80px;height:80px}
-    .brand-line1{font-size:1.15rem}
-    .brand-line2{font-size:1.5rem}
+    .brand-line1{font-size:1.05rem}
+    .brand-line2{font-size:1.35rem}
 }
 
 /* nav aligned to the right */
@@ -1084,7 +1084,7 @@ img {
 	.menu-btn{
 		display: block;
 		transition: transform 0.3s ease;
-        padding: 8px 4px;
+        padding: 8px 0;
 	}
 	.menu-btn.open{
 		transform: rotate(90deg);
@@ -1092,7 +1092,7 @@ img {
     .menu-toggle{
         display: flex;
         align-items: center;
-        gap: 2px;
+        gap: 4px;
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
     .menu-toggle.is-hidden{
@@ -1104,7 +1104,7 @@ img {
 		display: inline-block;
 		color: #fff;
 		font-size: 0.9rem;
-		margin-right: 0;
+		margin-right: 10px;
 		opacity: 1;
         transition: opacity 0.3s ease, transform 0.3s ease;
 	}
