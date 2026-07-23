@@ -279,6 +279,30 @@ document.addEventListener('DOMContentLoaded', function () {
 			renderModalSlide();
 		}
 
+		let modalTouchStartX = 0;
+		let modalTouchStartY = 0;
+		const MODAL_SWIPE_THRESHOLD = 40;
+
+		eventosModal.addEventListener('touchstart', (event) => {
+			const touch = event.changedTouches[0];
+			modalTouchStartX = touch.clientX;
+			modalTouchStartY = touch.clientY;
+		}, { passive: true });
+
+		eventosModal.addEventListener('touchend', (event) => {
+			const touch = event.changedTouches[0];
+			const deltaX = touch.clientX - modalTouchStartX;
+			const deltaY = touch.clientY - modalTouchStartY;
+
+			if (Math.abs(deltaX) > MODAL_SWIPE_THRESHOLD && Math.abs(deltaX) > Math.abs(deltaY)) {
+				if (deltaX < 0) {
+					modalNext();
+				} else {
+					modalPrev();
+				}
+			}
+		}, { passive: true });
+
 		eventosCollageBtns.forEach((button) => {
 			button.addEventListener('click', () => openModal(button.dataset.gallery, 0));
 		});
