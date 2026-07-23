@@ -81,7 +81,7 @@ h2 {
 
 @media(max-width:600px){
     .brand{margin-left:12px}
-    .brand-img{width:65px;height:65px}
+    .brand-img{width:80px;height:80px}
     .brand-line1{font-size:0.95rem}
     .brand-line2{font-size:1.125rem}
 }
