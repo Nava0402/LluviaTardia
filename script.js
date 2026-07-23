@@ -278,18 +278,32 @@ document.addEventListener('DOMContentLoaded', function () {
 			modalIndex = (modalIndex - 1 + modalSlides.length) % modalSlides.length;
 			renderModalSlide();
 		}
-
 		let modalTouchStartX = 0;
 		let modalTouchStartY = 0;
+		let modalTouchTracking = false;
 		const MODAL_SWIPE_THRESHOLD = 40;
 
 		eventosModal.addEventListener('touchstart', (event) => {
-			const touch = event.changedTouches[0];
+			const touch = event.touches[0];
 			modalTouchStartX = touch.clientX;
 			modalTouchStartY = touch.clientY;
+			modalTouchTracking = true;
 		}, { passive: true });
 
+		eventosModal.addEventListener('touchmove', (event) => {
+			if (!modalTouchTracking) return;
+			const touch = event.touches[0];
+			const deltaX = touch.clientX - modalTouchStartX;
+			const deltaY = touch.clientY - modalTouchStartY;
+
+			if (Math.abs(deltaX) > Math.abs(deltaY)) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+
 		eventosModal.addEventListener('touchend', (event) => {
+			if (!modalTouchTracking) return;
+			modalTouchTracking = false;
 			const touch = event.changedTouches[0];
 			const deltaX = touch.clientX - modalTouchStartX;
 			const deltaY = touch.clientY - modalTouchStartY;
@@ -301,6 +315,10 @@ document.addEventListener('DOMContentLoaded', function () {
 					modalPrev();
 				}
 			}
+		}, { passive: true });
+
+		eventosModal.addEventListener('touchcancel', () => {
+			modalTouchTracking = false;
 		}, { passive: true });
 
 		eventosCollageBtns.forEach((button) => {
