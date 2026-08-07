@@ -1109,7 +1109,7 @@ img {
 	.menu-btn{
 		display: block;
 		transition: transform 0.3s ease;
-        padding: 8px 0;
+        padding: 8px 14px;
 	}
 	.menu-btn.open{
 		transform: rotate(90deg);
