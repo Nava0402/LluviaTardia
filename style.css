@@ -85,15 +85,15 @@ h2 {
 }
 
 @media(max-width:900px){
-    .brand{margin-left:12px}
-    .brand-img{width: clamp(70px, 9vw, 95px)}
+    .brand{margin-left:14px}
+    .brand-img{width: clamp(110px, 16vw, 160px)}
     .brand-line1{font-size:1.05rem}
     .brand-line2{font-size:1.35rem}
 }
 
 @media(max-width:600px){
-    .brand{margin-left:10px}
-    .brand-img{width: clamp(65px, 20vw, 85px)}
+    .brand{margin-left:12px}
+    .brand-img{width: clamp(100px, 26vw, 140px)}
     .brand-line1{font-size:1rem}
     .brand-line2{font-size:1.2rem}
 }
