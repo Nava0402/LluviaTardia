@@ -55,21 +55,20 @@ h2 {
 .brand-link{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:14px;
     color:inherit;
     text-decoration:none;
 }
 .brand-img{
-    width:80px;
+    width: clamp(150px, 15vw, 230px);
     height:auto;
     display:block;
     object-fit:contain;
-    box-shadow:0 2px 8px rgba(0,0,0,0.18);
 }
 .brand-text{display:flex;flex-direction:column;line-height:1;align-items:flex-start}
 .brand-line1{
     font-family:var(--font-brand);
-    font-size:1.2rem;
+    font-size:1.25rem;
     font-weight:400;
     letter-spacing:0.18em; /* wider tracking for 'The' */
     margin-bottom:-4px; /* visually tuck it under */
@@ -84,11 +83,18 @@ h2 {
     text-transform:none;
 }
 
-@media(max-width:600px){
-    .brand{margin-left:12px}
-    .brand-img{width:80px;height:80px}
+@media(max-width:900px){
+.brand{margin-left:12px}
+    .brand-img{width: clamp(120px, 18vw, 170px)}
     .brand-line1{font-size:1.05rem}
     .brand-line2{font-size:1.35rem}
+}
+
+@media(max-width:600px){
+    .brand{margin-left:10px}
+    .brand-img{width: clamp(110px, 32vw, 150px)}
+    .brand-line1{font-size:1rem}
+    .brand-line2{font-size:1.2rem}
 }
 
 /* nav aligned to the right */
