@@ -195,7 +195,39 @@ document.addEventListener('DOMContentLoaded', function () {
 	const eventosModalPrev = document.getElementById('eventosModalPrev');
 	const eventosModalNext = document.getElementById('eventosModalNext');
 	const eventosModalClose = document.getElementById('eventosModalClose');
+	// Carrusel de arrastre para "Sobre nosotros"
+	const aboutGallery = document.getElementById('aboutGallery');
 
+	if (aboutGallery) {
+    	let isDown = false;
+    	let startX;
+    	let scrollLeft;
+
+    	aboutGallery.addEventListener('mousedown', (e) => {
+        	isDown = true;
+        	aboutGallery.classList.add('is-dragging');
+        	startX = e.pageX - aboutGallery.offsetLeft;
+        	scrollLeft = aboutGallery.scrollLeft;
+    	});
+
+    	aboutGallery.addEventListener('mouseleave', () => {
+        	isDown = false;
+        	aboutGallery.classList.remove('is-dragging');
+    	});
+
+    	aboutGallery.addEventListener('mouseup', () => {
+        	isDown = false;
+        	aboutGallery.classList.remove('is-dragging');
+    	});
+
+    	aboutGallery.addEventListener('mousemove', (e) => {
+        	if (!isDown) return;
+        	e.preventDefault();
+        	const x = e.pageX - aboutGallery.offsetLeft;
+        	const walk = (x - startX) * 1.5; // multiplicador de velocidad del arrastre
+        	aboutGallery.scrollLeft = scrollLeft - walk;
+    	});
+	}
 	if (eventosCollageBtns.length && eventosModal && eventosModalImg && eventosModalDots) {
 		const modalGalleries = {
 			bryanc: [
