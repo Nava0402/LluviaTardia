@@ -18,7 +18,25 @@ body{
     margin: 0;
     font-family: var(--font-base);
     background: var(--bg);color: #0f172a;
-}  
+}
+
+.hero-title-bottom{
+    margin-top: 24px;
+    margin-bottom: 0;
+    font-size: 30px;
+}
+
+.hero-welcome{
+    letter-spacing: 0.10em;
+    font-size: 30px;
+}
+
+.inicio-card-icon{
+    width: 48px;
+    height: 48px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
 
 .container{
     max-width:var(--max-width);
@@ -65,6 +83,7 @@ h2 {
     object-fit:contain;
     margin-top: 0;
     border-radius: 0;
+    margin: 4px 4px 4px 4px;
 }
 .brand-text{display:flex;flex-direction:column;line-height:1;align-items:flex-start}
 .brand-line1{
@@ -312,6 +331,19 @@ img {
     font-size: 0.95rem;
     line-height: 1.65;
     text-align: center;
+}
+
+.inicio-card-icon{
+    font-size: 2.5rem;
+    color: #063970;
+    margin-bottom: 12px;
+    display: block;
+    transition: transform 220ms ease, color 220ms ease;
+}
+
+.inicio-card:hover .inicio-card-icon{
+    transform: scale(1.15) translateY(-4px);
+    color: #0a4fa0;
 }
 
 .hero p {
