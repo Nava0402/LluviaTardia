@@ -75,7 +75,6 @@ body{
     margin: 0;
     overflow: hidden;
     scroll-snap-align: center;
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
     border-radius: 110px; /* esquinas parejas, bien redondeadas */
     transform: scale(0.86);
     transition: transform 220ms ease;
