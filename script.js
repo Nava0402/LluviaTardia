@@ -306,34 +306,47 @@ const aboutGallery = document.getElementById('aboutGallery');
 if (aboutGallery) {
     const items = aboutGallery.querySelectorAll('.about-gallery-item');
 
-    function updateScale() {
-        const galleryRect = aboutGallery.getBoundingClientRect();
-        const galleryCenter = galleryRect.left + galleryRect.width / 2;
+    // Calcula la posición de cada tarjeta UNA sola vez (no cambia al hacer scroll)
+let itemCenters = [];
 
-        items.forEach((item) => {
-            const itemRect = item.getBoundingClientRect();
-            const itemCenter = itemRect.left + itemRect.width / 2;
-            const distance = Math.abs(galleryCenter - itemCenter);
-            const maxDistance = galleryRect.width / 2;
-            const proximity = Math.max(0, 1 - distance / maxDistance);
+function cacheItemPositions() {
+    itemCenters = Array.from(items).map((item) => item.offsetLeft + item.offsetWidth / 2);
+}
 
-            // escala entre 0.82 (lejos) y 1 (centrado)
-            const scale = 0.82 + proximity * 0.18;
-            item.style.transform = `scale(${scale.toFixed(3)})`;
+aboutGallery.addEventListener('scroll', requestUpdateScale);
+window.addEventListener('load', () => {
+    cacheItemPositions();
+    updateScale();
+});
+window.addEventListener('resize', cacheItemPositions); // recalcula si cambia el tamaño de pantalla
+cacheItemPositions();
+updateScale();
 
-            item.classList.toggle('is-active', proximity > 0.85);
-        });
-    }
+function updateScale() {
+    const containerWidth = aboutGallery.clientWidth;
+    const galleryCenter = aboutGallery.scrollLeft + containerWidth / 2;
 
-	let scaleScheduled = false;
-	function requestUpdateScale() {
-    	if (scaleScheduled) return;
-    	scaleScheduled = true;
-    	requestAnimationFrame(() => {
-	        updateScale();
-        	scaleScheduled = false;
-    	});
-	}
+    items.forEach((item, i) => {
+        const itemCenter = itemCenters[i];
+        const distance = Math.abs(galleryCenter - itemCenter);
+        const maxDistance = containerWidth / 2;
+        const proximity = Math.max(0, 1 - distance / maxDistance);
+
+        const scale = 0.82 + proximity * 0.18;
+        item.style.transform = `scale(${scale.toFixed(3)})`;
+        item.classList.toggle('is-active', proximity > 0.85);
+    });
+}
+
+let scaleScheduled = false;
+function requestUpdateScale() {
+    if (scaleScheduled) return;
+    scaleScheduled = true;
+    requestAnimationFrame(() => {
+        updateScale();
+        scaleScheduled = false;
+    });
+}
 
     // Arrastre con mouse (desktop)
     let isDown = false;

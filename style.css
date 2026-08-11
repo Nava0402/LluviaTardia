@@ -83,6 +83,8 @@ body.menu-open{
     transform: scale(0.86);
     transition: transform 220ms ease;
     will-change: transform;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .about-gallery-item.is-active{
