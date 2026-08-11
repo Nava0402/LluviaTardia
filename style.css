@@ -38,6 +38,10 @@ body{
     margin-bottom: 0;
 }
 
+body.menu-open{
+    overflow: hidden;
+}
+
 .about-gallery-wrap{
     margin-top: 40px;
 }
@@ -75,7 +79,7 @@ body{
     margin: 0;
     overflow: hidden;
     scroll-snap-align: center;
-    border-radius: 110px; /* esquinas parejas, bien redondeadas */
+    border-radius: 90px; /* esquinas parejas, bien redondeadas */
     transform: scale(0.86);
     transition: transform 220ms ease;
     will-change: transform;
@@ -643,6 +647,26 @@ img {
     text-align: center;
     color: var(--muted);
     margin-top: 16px;
+}
+
+.eventos-modal-photo{
+    position: relative;
+}
+
+.eventos-modal-caption{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 24px 24px 20px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: clamp(1.2rem, 2.8vw, 2rem);
+    text-align: left;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
+    text-shadow: 0 4px 16px rgba(0,0,0,0.6);
+    border-radius: 0 0 12px 12px;
 }
 
 .eventos-slider-wrap{
@@ -1322,6 +1346,7 @@ img {
     }
 
     .brand-img{
+        margin-top: 25px;
         width: 150px;
     }
 
