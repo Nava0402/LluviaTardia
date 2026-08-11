@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Agrega aquí cada mes cuando tengan anuncios cargados en modalGalleries (más abajo en este archivo).
 	const monthAnuncios = {
-		julio: { title: 'Eventos de Julio', gallery: 'anuncios' }
+		julio: { title: 'Anuncios de Julio', gallery: 'anuncios' }
 	};
 
 	anunciosMonthSelect?.addEventListener('change', () => {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             anunciosMonthGalleryBtn.hidden = false;
             anunciosEmptyMessage.hidden = true;
         } else {
-            anunciosMonthTitle.textContent = `Eventos de ${monthLabel}`;
+            anunciosMonthTitle.textContent = `Anuncios de ${monthLabel}`;
             anunciosMonthGalleryBtn.hidden = true;
             anunciosEmptyMessage.hidden = false;
         }
