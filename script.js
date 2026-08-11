@@ -325,6 +325,16 @@ if (aboutGallery) {
         });
     }
 
+	let scaleScheduled = false;
+	function requestUpdateScale() {
+    	if (scaleScheduled) return;
+    	scaleScheduled = true;
+    	requestAnimationFrame(() => {
+	        updateScale();
+        	scaleScheduled = false;
+    	});
+	}
+
     // Arrastre con mouse (desktop)
     let isDown = false;
     let startX;
@@ -348,13 +358,17 @@ if (aboutGallery) {
     });
 
     aboutGallery.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - aboutGallery.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        aboutGallery.scrollLeft = scrollLeft - walk;
-        updateScale();
-    });
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - aboutGallery.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    aboutGallery.scrollLeft = scrollLeft - walk;
+    requestUpdateScale(); // antes: updateScale()
+});
+
+	aboutGallery.addEventListener('scroll', requestUpdateScale); // antes: updateScale
+	window.addEventListener('load', updateScale);
+	updateScale();
 
     // Actualiza también con scroll táctil (celular) y con la rueda del mouse
     aboutGallery.addEventListener('scroll', updateScale);
