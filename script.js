@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			dotButtons.push(dot);
 		});
 
-// Al hacer clic en la foto del slider, abre el modal de pantalla completa
 eventosSliderFrame.style.cursor = 'pointer';
 eventosSliderFrame.addEventListener('click', (event) => {
     if (event.target.closest('.eventos-slider-dots')) return;
@@ -178,6 +177,9 @@ eventosSliderFrame.addEventListener('click', (event) => {
         document.body.classList.remove('menu-open');
         eventosModalClose?.removeEventListener('click', localClose);
         document.removeEventListener('keydown', localKeydown);
+        eventosModal.removeEventListener('touchstart', onTouchStart);
+        eventosModal.removeEventListener('touchmove', onTouchMove);
+        eventosModal.removeEventListener('touchend', onTouchEnd);
     }
 
     function localKeydown(e) {
@@ -185,6 +187,47 @@ eventosSliderFrame.addEventListener('click', (event) => {
         if (e.key === 'ArrowLeft') localPrev();
         if (e.key === 'Escape') localClose();
     }
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchTracking = false;
+    const SWIPE_THRESHOLD = 40;
+
+    function onTouchStart(e) {
+        const touch = e.touches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+        touchTracking = true;
+    }
+
+    function onTouchMove(e) {
+        if (!touchTracking) return;
+        const touch = e.touches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            e.preventDefault();
+        }
+    }
+
+    function onTouchEnd(e) {
+        if (!touchTracking) return;
+        touchTracking = false;
+        const touch = e.changedTouches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+        if (Math.abs(deltaX) > SWIPE_THRESHOLD && Math.abs(deltaX) > Math.abs(deltaY)) {
+            if (deltaX < 0) {
+                localNext();
+            } else {
+                localPrev();
+            }
+        }
+    }
+
+    eventosModal.addEventListener('touchstart', onTouchStart, { passive: true });
+    eventosModal.addEventListener('touchmove', onTouchMove, { passive: false });
+    eventosModal.addEventListener('touchend', onTouchEnd, { passive: true });
 
     renderLocalSlide();
     eventosModal.classList.add('open');
