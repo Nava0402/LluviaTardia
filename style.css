@@ -651,11 +651,14 @@ img {
 
 .eventos-collage-wrap{
     margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .eventos-collage-title{
     width: min(100%, 860px);
-    margin: 0 auto;
+    margin: 0;
     padding: 10px 14px;
     text-align: center;
     border-radius: 14px 14px 0 0;
@@ -665,7 +668,7 @@ img {
 
 .eventos-collage{
     width: min(100%, 860px);
-    margin: 0 auto;
+    margin: 0;
     border: 0;
     padding: 0;
     display: grid;
@@ -677,6 +680,10 @@ img {
     overflow: hidden;
     position: relative;
     box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
+}
+
+[hidden]{
+    display: none !important;
 }
 
 .eventos-cover,
@@ -1273,4 +1280,101 @@ img {
 	.close-btn {
 		display: none !important;
 	}
+}
+
+/* ======================================
+   MENÚ LATERAL - SOLO EN COMPUTADORA (901px+)
+   No afecta tablet ni móvil en absoluto
+====================================== */
+@media(min-width:901px){
+    body{
+        overflow-x: hidden;
+    }
+
+    .site-header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 240px;
+        height: 100vh;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        z-index: 500;
+        overflow-y: auto;
+    }
+
+    .header-inner{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        padding: 32px 24px;
+        gap: 0;
+    }
+
+    .brand{
+        margin-left: 0;
+        margin-bottom: 32px;
+    }
+
+    .brand-img{
+        width: 150px;
+    }
+
+    .nav{
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 4px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .nav a{
+        width: 100%;
+        padding: 12px 8px;
+    }
+
+    .nav a:hover,
+    .nav a[aria-current="page"]{
+        box-shadow: inset 3px 0 0 0 #ffffff;
+        padding-left: 16px;
+    }
+
+    .menu-toggle{
+        display: none;
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 240px;
+        width: calc(100% - 240px);
+    }
+
+    main > *{
+        width: 100%;
+    }
+
+    .container{
+        padding: 0 32px;
+    }
+}
+
+@media(min-width:901px) and (max-width:1200px){
+    .site-header{
+        width: 200px;
+    }
+    .brand-img{
+        width: 120px;
+    }
+    main{
+        margin-left: 200px;
+        width: calc(100% - 200px);
+    }
 }
