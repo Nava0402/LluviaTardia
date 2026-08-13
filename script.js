@@ -305,48 +305,46 @@ const aboutGallery = document.getElementById('aboutGallery');
 
 if (aboutGallery) {
     const items = aboutGallery.querySelectorAll('.about-gallery-item');
+    let itemCenters = [];
 
-    // Calcula la posición de cada tarjeta UNA sola vez (no cambia al hacer scroll)
-let itemCenters = [];
+    function cacheItemPositions() {
+        itemCenters = Array.from(items).map((item) => item.offsetLeft + item.offsetWidth / 2);
+    }
 
-function cacheItemPositions() {
-    itemCenters = Array.from(items).map((item) => item.offsetLeft + item.offsetWidth / 2);
-}
+    function updateScale() {
+        const containerWidth = aboutGallery.clientWidth;
+        const galleryCenter = aboutGallery.scrollLeft + containerWidth / 2;
 
-aboutGallery.addEventListener('scroll', requestUpdateScale);
-window.addEventListener('load', () => {
-    cacheItemPositions();
-    updateScale();
-});
-window.addEventListener('resize', cacheItemPositions); // recalcula si cambia el tamaño de pantalla
-cacheItemPositions();
-updateScale();
+        items.forEach((item, i) => {
+            const itemCenter = itemCenters[i];
+            const distance = Math.abs(galleryCenter - itemCenter);
+            const maxDistance = containerWidth / 2;
+            const proximity = Math.max(0, 1 - distance / maxDistance);
 
-function updateScale() {
-    const containerWidth = aboutGallery.clientWidth;
-    const galleryCenter = aboutGallery.scrollLeft + containerWidth / 2;
+            const scale = 0.82 + proximity * 0.18;
+            item.style.transform = `scale(${scale.toFixed(3)})`;
+            item.classList.toggle('is-active', proximity > 0.85);
+        });
+    }
 
-    items.forEach((item, i) => {
-        const itemCenter = itemCenters[i];
-        const distance = Math.abs(galleryCenter - itemCenter);
-        const maxDistance = containerWidth / 2;
-        const proximity = Math.max(0, 1 - distance / maxDistance);
+    let scaleScheduled = false;
+    function requestUpdateScale() {
+        if (scaleScheduled) return;
+        scaleScheduled = true;
+        requestAnimationFrame(() => {
+            updateScale();
+            scaleScheduled = false;
+        });
+    }
 
-        const scale = 0.82 + proximity * 0.18;
-        item.style.transform = `scale(${scale.toFixed(3)})`;
-        item.classList.toggle('is-active', proximity > 0.85);
-    });
-}
-
-let scaleScheduled = false;
-function requestUpdateScale() {
-    if (scaleScheduled) return;
-    scaleScheduled = true;
-    requestAnimationFrame(() => {
-        updateScale();
-        scaleScheduled = false;
-    });
-}
+    let scrollEndTimer = null;
+    function handleScrollEnd() {
+        clearTimeout(scrollEndTimer);
+        aboutGallery.classList.remove('is-settled');
+        scrollEndTimer = setTimeout(() => {
+            aboutGallery.classList.add('is-settled');
+        }, 120);
+    }
 
     // Arrastre con mouse (desktop)
     let isDown = false;
@@ -371,23 +369,28 @@ function requestUpdateScale() {
     });
 
     aboutGallery.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - aboutGallery.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    aboutGallery.scrollLeft = scrollLeft - walk;
-    requestUpdateScale(); // antes: updateScale()
-});
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - aboutGallery.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        aboutGallery.scrollLeft = scrollLeft - walk;
+        requestUpdateScale();
+    });
 
-	aboutGallery.addEventListener('scroll', requestUpdateScale); // antes: updateScale
-	window.addEventListener('load', updateScale);
-	updateScale();
+    // Único listener de scroll (cubre táctil, rueda del mouse, y arrastre)
+    aboutGallery.addEventListener('scroll', () => {
+        requestUpdateScale();
+        handleScrollEnd();
+    });
 
-    // Actualiza también con scroll táctil (celular) y con la rueda del mouse
-    aboutGallery.addEventListener('scroll', updateScale);
+    window.addEventListener('resize', cacheItemPositions);
 
-    // Estado inicial al cargar la página
-    window.addEventListener('load', updateScale);
+    window.addEventListener('load', () => {
+        cacheItemPositions();
+        updateScale();
+    });
+
+    cacheItemPositions();
     updateScale();
 }
 	if (eventosCollageBtns.length && eventosModal && eventosModalImg && eventosModalDots) {

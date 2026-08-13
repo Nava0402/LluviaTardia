@@ -81,10 +81,13 @@ body.menu-open{
     scroll-snap-align: center;
     border-radius: 90px; /* esquinas parejas, bien redondeadas */
     transform: scale(0.86);
-    transition: transform 220ms ease;
     will-change: transform;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+}
+
+.about-gallery.is-settled .about-gallery-item{
+    transition: transform 220ms ease;
 }
 
 .about-gallery-item.is-active{
