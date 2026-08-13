@@ -691,7 +691,7 @@ img {
     padding: 10px 14px;
     text-align: center;
     border-radius: 14px 14px 0 0;
-    background: #c9b896;
+    background: #898989;
     color: #ffffff;
 }
 
@@ -733,7 +733,7 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: 8px;
-    background: #c9b896;
+    background: #898989;
     padding: 8px;
 }
 
