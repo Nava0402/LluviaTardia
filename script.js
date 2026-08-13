@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Agrega aquí cada mes cuando tengan anuncios cargados en modalGalleries (más abajo en este archivo).
 	const monthAnuncios = {
-		julio: { title: 'Anuncios de Julio', gallery: 'anuncios' }
+		julio: { title: 'Anuncios de Julio', gallery: 'julio', cover: 'img/anuncios3.jpg', thumbs: ['img/anuncios2.jpg', 'img/anuncios.jpg'] },
+		agosto: { title: 'Anuncios de Agosto', gallery: 'agosto', cover: 'img/CongresoJvns.jpg', thumbs: ['img/FiestaDAmigo.jpg', 'img/TiempoCDios.jpg'] }
 	};
 
 	anunciosMonthSelect?.addEventListener('change', () => {
@@ -35,6 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
             anunciosMonthGalleryBtn.dataset.gallery = data.gallery;
             anunciosMonthGalleryBtn.hidden = false;
             anunciosEmptyMessage.hidden = true;
+
+			const coverImg = anunciosMonthGalleryBtn.querySelector('.eventos-cover');
+        	const thumbImgs = anunciosMonthGalleryBtn.querySelectorAll('.eventos-thumbs img');
+        	if (coverImg) coverImg.src = data.cover;
+        	thumbImgs.forEach((img, i) => {
+            	if (data.thumbs[i]) img.src = data.thumbs[i];
+        	});
         } else {
             anunciosMonthTitle.textContent = `Anuncios de ${monthLabel}`;
             anunciosMonthGalleryBtn.hidden = true;
@@ -416,11 +424,17 @@ if (aboutGallery) {
 				'img/CarlosG4.jpg',
 				'img/CarlosG5.jpg'
 			],
-			anuncios: [
+			julio: [
         		'img/anuncios3.jpg',
         		'img/anuncios2.jpg',
         		'img/anuncios.jpg'
-    		]
+    		],
+			agosto: [
+				'img/CongresoJvns.jpg',
+				'img/FiestaDAmigo.jpg',
+				'img/TiempoCDios.jpg',
+				'img/Hospitales.jpg'
+			]
 		};
 
 		Object.values(modalGalleries).flat().forEach((src) => {
