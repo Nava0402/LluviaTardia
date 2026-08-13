@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Agrega aquí cada mes cuando tengan anuncios cargados en modalGalleries (más abajo en este archivo).
 	const monthAnuncios = {
-		julio: { title: 'Anuncios de Julio', gallery: 'julio', cover: 'img/anuncios3.jpg', thumbs: ['img/anuncios2.jpg', 'img/anuncios.jpg'] },
 		agosto: { title: 'Anuncios de Agosto', gallery: 'agosto', cover: 'img/CongresoJvns.jpg', thumbs: ['img/FiestaDAmigo.jpg', 'img/TiempoCDios.jpg'] }
 	};
 
@@ -425,9 +424,7 @@ if (aboutGallery) {
 				'img/CarlosG5.jpg'
 			],
 			julio: [
-        		'img/anuncios3.jpg',
-        		'img/anuncios2.jpg',
-        		'img/anuncios.jpg'
+				
     		],
 			agosto: [
 				'img/CongresoJvns.jpg',
