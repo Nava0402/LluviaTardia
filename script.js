@@ -118,11 +118,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	if (eventosSlider && eventosSliderFrame && eventosSliderImg && eventosSliderTitle && eventosSliderDots) {
 		const eventosSlides = [
-			{ src: 'img/BryanC1.jpg', title: 'Bryan Caro "Transformación' },
-			{ src: 'img/BryanC2.jpg', title: 'Lol' },
-			{ src: 'img/BryanC3.jpg', title: 'Bryan Caro "Transformación' },
-			{ src: 'img/BryanC4.jpg', title: 'Bryan Caro "Transformación' },
-			{ src: 'img/BryanC5.jpg', title: 'Bryan Caro "Transformación' }
+			{ src: 'img/Equipo1.jpg', title: 'Ministerio de Intercesión' },
+			{ src: 'img/Equipo2.jpg', title: 'Ministerio de Servidores' },
+			{ src: 'img/Equipo3.jpg', title: '' },
+			{ src: 'img/Equipo4.jpg', title: '' },
+			{ src: 'img/Equipo5.jpg', title: '' }
 		];
 
 		eventosSlides.forEach((slide) => {
