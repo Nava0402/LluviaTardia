@@ -110,6 +110,16 @@ body.menu-open{
     }
 }
 
+.mobile-break{
+    display: none;
+}
+
+@media(max-width:900px){
+    .mobile-break{
+        display: block;
+    }
+}
+
 .container{
     max-width:var(--max-width);
     margin:0 auto;
