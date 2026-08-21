@@ -402,6 +402,49 @@ if (aboutGallery) {
 }
 	if (eventosCollageBtns.length && eventosModal && eventosModalImg && eventosModalDots) {
 		const modalGalleries = {
+			soyhija: [
+				'img/SoyHija1.jpg',
+				'img/SoyHija2.jpg',
+				'img/SoyHija3.jpg',
+				'img/SoyHija4.jpg',
+				'img/SoyHija5.jpg',
+				'img/SoyHija6.jpg',
+				'img/SoyHija7.jpg',
+				'img/SoyHija8.jpg',
+				'img/SoyHija9.jpg',
+				'img/SoyHija10.jpg',
+				'img/SoyHija11.jpg',
+				'img/SoyHija12.jpg'
+			],
+			somosluz: [
+				'img/SomosLuz1.jpg',
+				'img/SomosLuz2.jpg',
+				'img/SomosLuz3.jpg',
+				'img/SomosLuz4.jpg',
+				'img/SomosLuz5.jpg',
+				'img/SomosLuz6.jpg',
+				'img/SomosLuz7.jpg',
+				'img/SomosLuz8.jpg',
+				'img/SomosLuz9.jpg',
+				'img/SomosLuz10.jpg',
+				'img/SomosLuz11.jpg',
+				'img/SomosLuz12.jpg',
+				'img/SomosLuz13.jpg',
+				'img/SomosLuz14.jpg',
+				'img/SomosLuz15.jpg'
+			],
+			amorllamas: [
+				'img/AmorLlamas1.jpg',
+				'img/AmorLlamas2.jpg',
+				'img/AmorLlamas3.jpg',
+				'img/AmorLlamas4.jpg',
+				'img/AmorLlamas5.jpg',
+				'img/AmorLlamas6.jpg',
+				'img/AmorLlamas7.jpg',
+				'img/AmorLlamas8.jpg',
+				'img/AmorLlamas9.jpg',
+				'img/AmorLlamas10.jpg'
+			],
 			bryanc: [
 				'img/BryanC1.jpg',
 				'img/BryanC2.jpg',
