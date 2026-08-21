@@ -118,11 +118,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	if (eventosSlider && eventosSliderFrame && eventosSliderImg && eventosSliderTitle && eventosSliderDots) {
 		const eventosSlides = [
-			{ src: 'img/BryanC1.jpg', title: 'Bryan Caro "Transformación"' },
-			{ src: 'img/BryanC2.jpg', title: 'Bryan Caro "Transformación"' },
-			{ src: 'img/BryanC3.jpg', title: 'Bryan Caro "Transformación"' },
-			{ src: 'img/BryanC4.jpg', title: 'Bryan Caro "Transformación"' },
-			{ src: 'img/BryanC5.jpg', title: 'Bryan Caro "Transformación"' }
+			{ src: 'img/BryanC1.jpg', title: 'Bryan Caro "Transformación' },
+			{ src: 'img/BryanC2.jpg', title: 'Lol' },
+			{ src: 'img/BryanC3.jpg', title: 'Bryan Caro "Transformación' },
+			{ src: 'img/BryanC4.jpg', title: 'Bryan Caro "Transformación' },
+			{ src: 'img/BryanC5.jpg', title: 'Bryan Caro "Transformación' }
 		];
 
 		eventosSlides.forEach((slide) => {
@@ -256,7 +256,6 @@ eventosSliderFrame.addEventListener('click', (event) => {
 			const activeSlide = eventosSlides[currentIndex];
 			eventosSliderImg.src = activeSlide.src;
 			eventosSliderTitle.textContent = activeSlide.title;
-			eventosSliderFrame.classList.toggle('is-clean-slide', currentIndex !== 0);
 			dotButtons.forEach((dot, index) => {
 				dot.classList.toggle('active', index === currentIndex);
 			});
