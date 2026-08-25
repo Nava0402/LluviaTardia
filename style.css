@@ -1184,28 +1184,29 @@ img {
 	}
 	.header-inner{position:relative}
 	.nav{
-		position: fixed;
-		top: 0;
-		left: -100vw;
-		width: 100vw;
-		height: 100vh;
-		height: 100dvh;
-		background: #000;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: stretch;
-		gap: 0;
-		transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-		z-index: 1000;
-		padding: 80px 20px 20px;
-		overflow-y: auto;
-		-webkit-overflow-scrolling: touch;
-		overscroll-behavior: contain;
-		touch-action: pan-y;
-	}
-	.nav.open{
-		left: 0;
-	}
+    position: fixed;
+    top: -100vh;
+    top: -100dvh;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: #000;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0;
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    padding: 80px 20px 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+    }
+    .nav.open{
+        top: 0;
+    }
 	.close-btn {
 		position: absolute;
 		top: 20px;
