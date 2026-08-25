@@ -1212,22 +1212,21 @@ img {
     .nav a:not(.close-btn){
         opacity: 0;
         transform: translateY(14px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        transition-delay: 0s !important;
     }
-
     .nav.open a:not(.close-btn){
         opacity: 1;
         transform: translateY(0);
     }
-
-    .nav.open a:nth-of-type(1){ transition-delay: 0.30s; }
-    .nav.open a:nth-of-type(2){ transition-delay: 0.36s; }
-    .nav.open a:nth-of-type(3){ transition-delay: 0.42s; }
-    .nav.open a:nth-of-type(4){ transition-delay: 0.48s; }
-    .nav.open a:nth-of-type(5){ transition-delay: 0.54s; }
-    .nav.open a:nth-of-type(6){ transition-delay: 0.60s; }
-    .nav.open a:nth-of-type(7){ transition-delay: 0.66s; }
-    .nav.open a:nth-of-type(8){ transition-delay: 0.72s; }
+    .nav.open a:nth-of-type(1){ transition-delay: 0.30s !important; }
+    .nav.open a:nth-of-type(2){ transition-delay: 0.36s !important; }
+    .nav.open a:nth-of-type(3){ transition-delay: 0.42s !important; }
+    .nav.open a:nth-of-type(4){ transition-delay: 0.48s !important; }
+    .nav.open a:nth-of-type(5){ transition-delay: 0.54s !important; }
+    .nav.open a:nth-of-type(6){ transition-delay: 0.60s !important; }
+    .nav.open a:nth-of-type(7){ transition-delay: 0.66s !important; }
+    .nav.open a:nth-of-type(8){ transition-delay: 0.72s !important; }
 	.close-btn {
 		position: absolute;
 		top: 20px;
