@@ -55,24 +55,38 @@ document.addEventListener('DOMContentLoaded', function () {
 		const header = document.querySelector('.site-header');
 
 		function setMenuState(open){
-			nav.classList.toggle('open', open);
-			menuBtn.classList.toggle('open', open);
-			menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-			header.classList.toggle('menu-open', open);
-			document.body.classList.toggle('menu-open', open);
-			menuOverlay.classList.toggle('open', open);
+    menuBtn.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    header.classList.toggle('menu-open', open);
+    document.body.classList.toggle('menu-open', open);
+    menuOverlay.classList.toggle('open', open);
 
-			if (menuToggle) {
-				menuToggle.classList.toggle('is-hidden', open);
-			}
+    if (menuToggle) {
+        menuToggle.classList.toggle('is-hidden', open);
+    }
 
-			if (closeBtn) {
-				closeBtn.classList.toggle('is-visible', open);
-			}
+    if (closeBtn) {
+        closeBtn.classList.toggle('is-visible', open);
+    }
 
-			// keep hamburger visible text when toggle is shown
-			menuBtn.textContent = '☰';
-		}
+    menuBtn.textContent = '☰';
+
+    if (open) {
+        nav.classList.remove('closing-instant');
+        nav.classList.add('open');
+    } else {
+        // Paso 1: los links desaparecen instantáneamente (sin animación)
+        nav.classList.add('closing-instant');
+        // Paso 2: en el siguiente frame, el fondo empieza su animación normal de cierre
+        requestAnimationFrame(() => {
+            nav.classList.remove('open');
+        });
+        // Paso 3: cuando termina la animación del fondo, limpiamos la clase temporal
+        setTimeout(() => {
+            nav.classList.remove('closing-instant');
+        }, 400);
+    }
+}
 
 		if (menuToggle) {
 			menuToggle.addEventListener('click', () => {
