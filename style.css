@@ -1207,7 +1207,6 @@ img {
     }
     .nav.open{
         top: 0;
-        opacity: 1;
     }
 	.close-btn {
 		position: absolute;
