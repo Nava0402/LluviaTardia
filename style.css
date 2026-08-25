@@ -1196,7 +1196,7 @@ img {
     justify-content: flex-start;
     align-items: stretch;
     gap: 0;
-    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: top 0.55s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1000;
     padding: 80px 20px 20px;
     overflow-y: auto;
@@ -1280,6 +1280,9 @@ img {
         opacity: 0;
         transform: translateY(-6px) scale(0.98);
         pointer-events: none;
+    }
+    .menu-overlay {
+    transition: opacity 0.4s ease;
     }
 	.header-actions{display:none}
 	.cards{grid-template-columns:1fr}
